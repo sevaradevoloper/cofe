@@ -53,8 +53,8 @@ body {
 }
 
 body {
-    background-color: var(--body-color);
-    color           : var(--text-color);
+    /* background-color: var(--body-color); */
+    color: var(--text-color);
 }
 
 h1,
@@ -210,7 +210,7 @@ img {
 
 /* ====home=============== */
 
-.home{
+.home {
     padding-top   : 100px;
     padding-bottom: 100px;
 }
@@ -345,8 +345,10 @@ img {
     &:hover {
         background-color: var(--first-color-alt);
         box-shadow      : 0 8px 24px hsla(166, 85%, 8%, .22);
+        border          : 2px dashed hsl(166, 95%, 12%);
     }
 }
+
 
 /*=============== HOME SECTION MOBIL REPSONSIVLIK (750px va KICHIK) ===============*/
 @media screen and (max-width: 750px) {
@@ -390,7 +392,8 @@ img {
 
 .collection {
     background-color: var(--white-color);
-    padding         : 100px 0;
+    padding-top     : 100px;
+    padding-bottom  : 50px;
     position        : relative;
 }
 
@@ -405,7 +408,7 @@ img {
     -webkit-background-clip: text;
     background-clip        : text;
     -webkit-text-fill-color: transparent;
-    text-fill-color        : transparent;
+    -text-fill-color        : transparent;
     color                  : transparent;
     font-family            : "Fraunces"9pt;
     font-weight            : 900;
@@ -436,7 +439,7 @@ img {
     transition    : transform .4s ease;
     z-index       : 10;
     list-style    : none;
-    padding-top: 150px;
+    padding-top   : 150px;
 }
 
 /* Kofe tushgan shape */
@@ -542,4 +545,373 @@ img {
         font-size  : 60px;
         line-height: 60px;
     }
+}
+
+.opinion {
+    background-color: var(--h3-color);
+    padding-top     : 50px;
+    padding-bottom  : 250px;
+    position        : relative;
+}
+
+.opinion__images {
+    display        : flex;
+    justify-content: center;
+    align-items    : center;
+    position       : absolute;
+    left           : 0;
+    right          : 0;
+    bottom         : -80px;
+}
+
+.opinion__title {
+    font-family   : Fraunces 9pt;
+    font-weight   : 900;
+    font-size     : 40px;
+    line-height   : 48px;
+    letter-spacing: 0px;
+    text-align    : center;
+    color         : var(--white-color);
+    margin-bottom : 25px;
+}
+
+.opinion__text {
+    font-family   : Barlow;
+    font-weight   : 400;
+    font-size     : 16px;
+    line-height   : 26px;
+    letter-spacing: 0px;
+    text-align    : center;
+    color         : var(--white-color);
+    max-width     : 540px;
+    margin        : 0 auto;
+}
+
+.opinion-slide {
+    width           : 320px;
+    height          : 282px;
+    padding         : 25px;
+    display         : flex;
+    flex-direction  : column;
+    justify-items   : center;
+    align-items     : center;
+    row-gap         : 25px;
+    background-color: var(--first-color);
+    margin-left     : 25px;
+    border-radius   : 30px;
+    box-shadow      : 0 10px 5px hsla(166, 85%, 8%, .22);
+
+    &:hover {
+        box-shadow   : 0 10px 25px hsla(166, 85%, 8%, .22);
+        margin-bottom: 25px;
+        border       : dashed 2px hsla(166, 85%, 8%, .22);
+    }
+
+    &:nth-child(2) {
+        margin-bottom: 30px;
+    }
+}
+
+.opinion__image {
+    width : 72px;
+    height: 72px;
+}
+
+.opinion__title-name {
+    font-family   : Fraunces 9pt;
+    font-weight   : 900;
+    font-size     : 24px;
+    line-height   : 32px;
+    letter-spacing: 0px;
+    text-align    : center;
+    color         : #FFFFFF;
+}
+
+.opinion__text-name {
+    font-family   : Barlow;
+    font-weight   : 400;
+    font-size     : 16px;
+    line-height   : 26px;
+    letter-spacing: 0px;
+    text-align    : center;
+    color         : #FFFFFF;
+}
+
+
+.work {
+    margin-top: 100px;
+}
+
+@media screen and (max-width: 750px) {
+
+    .home__container {
+        grid-template-columns: 1fr;
+        row-gap              : 3rem;
+    }
+
+    /* Rasmni yuqoriga chiqarish */
+    .home__images {
+        order        : 1;
+        margin-bottom: 15px;
+    }
+
+    /* Ma'lumot blokini pastga tushirish (Asosiy talab) */
+    .home__data {
+        order     : 2;
+        /* Absolyut joylashuvni o'chirib, elementni tabiiy oqimga qaytarish */
+        position  : static !important;
+        width     : 100% !important;
+        text-align: center !important;
+        /* Absolyut joylashuvdan qolgan qoldiq qoidalarini bekor qilish */
+        top       : auto !important;
+        left      : auto !important;
+        margin    : 0 auto;
+    }
+
+    .home__title {
+        font-size  : 50px;
+        line-height: 55px;
+        text-align : center;
+    }
+
+    .home__sticker {
+        display: none;
+    }
+
+    .opinion__images {
+        display       : flex;
+        flex-direction: column;
+        justify-items : center;
+        row-gap       : 25px;
+        align-items   : center;
+        position      : absolute;
+    }
+}
+
+
+/* ================ WORK SECTION STYLES ================ */
+
+.work {
+    background-color: var(--white-color);
+    /* Oq fon */
+    padding         : 100px 0;
+    position        : relative;
+}
+
+.work__container {
+    padding-top: 50px;
+}
+
+.work__title {
+    color        : var(--text-color);
+    font-family  : var(--second-font);
+    font-weight  : 900;
+    font-size    : 30px;
+    text-align   : left;
+    margin-bottom: 80px;
+}
+
+.work__images {
+    display        : flex;
+    justify-content: space-between;
+    list-style     : none;
+    padding        : 0;
+    margin-bottom  : 50px;
+    position       : relative;
+    /* Mobil dizayn uchun vertikal joylashish */
+    flex-direction : column;
+    align-items    : center;
+}
+
+/* 1. Bosqichlar orasidagi ulovchi chiziq (Katta ekranlar uchun) */
+.work__images::before {
+    content         : '';
+    position        : absolute;
+    top             : 15px;
+    left            : 0;
+    width           : 100%;
+    height          : 2px;
+    background-color: #fdd8d4;
+    /* Och rangli chiziq */
+    z-index         : 1;
+    display         : none;
+    /* Dastlab yashiriladi, katta ekranda ko'rsatiladi */
+}
+
+.work-slide {
+    position     : relative;
+    max-width    : 350px;
+    padding-top  : 50px;
+    /* Dumaloq element uchun joy */
+    z-index      : 2;
+    text-align   : center;
+    margin-bottom: 40px;
+    /* Mobil margin */
+}
+
+/* 2. Dumaloq check elementi */
+.work-slide::before {
+    content         : '';
+    position        : absolute;
+    top             : 0;
+    left            : 50%;
+    /* Mobil ko'rinishda markazga */
+    transform       : translateX(-50%);
+    width           : 31px;
+    height          : 31px;
+    border          : 2px solid var(--first-color);
+    /* Yashil ramka */
+    border-radius   : 50%;
+    background-color: var(--white-color);
+    z-index         : 3;
+    transition      : background-color 0.4s;
+}
+
+/* Faqat birinchi elementga yoki aktiv elementga yashil fon berish (JS orqali amalga oshiriladi) */
+.work-slide:first-child::before,
+.work-slide.active::before {
+    background-color: var(--first-color);
+    border-color    : var(--first-color);
+}
+
+/* Kontent stillari */
+.work-slide h2 {
+    font-family  : var(--second-font);
+    font-weight  : 900;
+    font-size    : 72px;
+    color        : var(--first-color);
+    margin-bottom: 24px;
+}
+
+.work__title-name {
+    font-family  : var(--second-font);
+    font-weight  : 900;
+    font-size    : 28px;
+    line-height  : 40px;
+    color        : var(--h3-color);
+    margin-bottom: 24px;
+}
+
+.work__text-name {
+    font-family: var(--body-font);
+    font-weight: 400;
+    font-size  : 16px;
+    line-height: 26px;
+    color      : var(--h3-color);
+    text-align : center;
+}
+
+.work__container button {
+    display         : block;
+    margin          : 0 auto;
+    background-color: var(--first-color);
+    color           : var(--white-color);
+    padding         : 1rem 2rem;
+    transition      : background .4s, box-shadow .4;
+    font-weight     : var(--font-semi-bold);
+    border          : none;
+    cursor          : pointer;
+}
+
+/* ================ MEDIA QUERIES (Katta ekranlar uchun) ================ */
+@media screen and (min-width: 750px) {
+    .work__images {
+        flex-direction : row;
+        /* Gorizontal joylashish */
+        justify-content: space-between;
+    }
+
+    .work__images::before {
+        display: block;
+        /* Chiziqni ko'rsatish */
+        /* work-slide o'lchamiga moslab left va width ni to'g'irlash */
+        width  : calc(100% - 70px);
+        left   : 35px;
+    }
+
+    .work-slide {
+        text-align   : left;
+        padding-top  : 100px;
+        max-width    : 30%;
+        margin-bottom: 0;
+    }
+
+    /* Dumaloq elementni chap tomonda joylashtirish */
+    .work-slide::before {
+        left     : 0;
+        transform: none;
+    }
+
+    /* Faqat aktiv bo'lgan slaydlar oldidagi chiziqni yashil qilish (JS talab etadi) */
+    /* Bu funksiya JSda qo'shimcha CSS klasslarini qo'shish orqali amalga oshiriladi */
+}
+
+
+/* ================ FOOTER SECTION STYLES ================ */
+
+.footer {
+    background-color: var(--h3-color);
+    /* To'q kulrang/qora fon rangi */
+    padding         : 30px 0;
+    display         : flex;
+    justify-content : space-between;
+    align-items     : center;
+}
+
+/* 1. Logo rasmi rangini o'zgartirish (Agar logo SVG bo'lsa) */
+/* Agar logo SVG bo'lsa va rangini CSS orqali o'zgartirish kerak bo'lsa, 
+   CSS filtrlari yordam berishi mumkin yoki SVG ichida fill rangini o'zgartirish kerak. 
+   Lekin eng oson yo'li - agar logoning oq versiyasi mavjud bo'lsa, uni ishlatish. 
+   Agar sizning LOGO.SVG faylingiz qora bo'lsa va uni oq qilish kerak bo'lsa, ushbu filtrni qo'shing: */
+.footer a img {
+    /* Logo rasmining ko'rinishini oq qilish uchun (Agar fon qora bo'lsa) */
+    filter: invert(1) grayscale(1) brightness(2);
+    /* Agar bu ishlamasa, logoning oq versiyasini ishlatish tavsiya etiladi. */
+}
+
+
+/* 2. Navigatsiya havolalari rangini OQ qilish */
+.footer__nav {
+    display    : flex;
+    gap        : 25px;
+    align-items: center;
+}
+
+.footer__nav a {
+    color         : var(--white-color);
+    /* Matn rangini OQ rangga o'zgartirish */
+    font-size     : 14px;
+    font-weight   : var(--font-semi-bold);
+    text-transform: uppercase;
+    transition    : color 0.3s;
+}
+
+.footer__nav a:hover {
+    color: var(--first-color);
+    /* Yashil rangga o'zgartirish (hover) */
+}
+
+/* 3. Ijtimoiy tarmoq IKONKALARI rangini OQ qilish */
+.webs {
+    display    : flex;
+    gap        : 25px;
+    align-items: center;
+}
+
+.webs a i {
+    font-size : 30px;
+    color     : var(--white-color);
+    /* Ikonka rangini OQ rangga o'zgartirish */
+    transition: color 0.3s;
+}
+
+.webs a i:hover {
+    color: var(--first-color);
+    /* Yashil rangga o'zgartirish (hover) */
+}
+
+
+/* ================ MEDIA QUERIES (Mobil qurilmalar uchun) ================ */
+@media screen and (max-width: 768px) {
+    /* ... (mobil qoidalar joyida qoladi) ... */
 }

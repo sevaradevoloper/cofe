@@ -61,7 +61,9 @@ sr.reveal('.home__bean-1, .home__bean-2',{delay : 2200,scale:0,duration:1500, ro
 sr.reveal('.home__ice-1, .home__ice-2',{delay : 2600,scale:0,duration:1500, rotate:{z:180}})
 sr.reveal('.home__leaf',{delay : 2800,scale:0,duration:1500, rotate:{z:90}})
 sr.reveal('.home__title',{delay : 3500})
-sr.reveal('.collection',{delay : 5000})
+sr.reveal('.collection__title',{delay : 3500})
+sr.reveal('.opinion__title',{delay :3500})
+sr.reveal('.opinion__image',{delay : 3700,scale:0,duration:1000, rotate:{z:180}})
 sr.reveal('.home__data, .home__sticker',{delay : 4000})
 
 
@@ -117,3 +119,26 @@ collectionImages.forEach(slide => {
         }
     });
 });
+
+
+
+
+
+
+
+
+
+sr.reveal('.work__title', { origin: 'left', distance: '100px', delay: 300 });
+
+// 2. Har bir qadamni (li) chapdan o'ngga ketma-ket chiqarish
+sr.reveal('.work-slide', { 
+    origin: 'left', 
+    distance: '100px', 
+    delay: 1000, 
+    interval: 200, // Har bir qadam 200ms kechikish bilan chiqadi
+    duration: 2000,
+    
+});
+
+// 3. Tugma
+sr.reveal('.work__container button', { origin: 'bottom', distance: '50px', delay: 1000, reset: false });
