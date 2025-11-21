@@ -11,6 +11,7 @@
     --dark-color     : hsl(166, 95%, 12%);
     --header-color   : hsla(168, 33%, 97%, 0.884);
     --white-color    : #FEFCF7;
+    --h3-color       : #333D4B;
 
     /*========== Font and typography ==========*/
     --body-font       : "Barlow", serif;
@@ -209,8 +210,9 @@ img {
 
 /* ====home=============== */
 
-.main {
-    padding-top: 100px;
+.home{
+    padding-top   : 100px;
+    padding-bottom: 100px;
 }
 
 .section {
@@ -381,5 +383,163 @@ img {
 
     .home__sticker {
         display: none;
+    }
+}
+
+/* ================ COLLECTION SECTION STYLES ================ */
+
+.collection {
+    background-color: var(--white-color);
+    padding         : 100px 0;
+    position        : relative;
+}
+
+/* 1. Gradient sarlavha (Our Collection) */
+.collection__title {
+    position               : absolute;
+    top                    : 50px;
+    left                   : 0;
+    right                  : 0;
+    /* Tepasi to'q kulrang, pasti oq gradient */
+    background-image       : linear-gradient(to bottom, #666565, #f5f1f1);
+    -webkit-background-clip: text;
+    background-clip        : text;
+    -webkit-text-fill-color: transparent;
+    text-fill-color        : transparent;
+    color                  : transparent;
+    font-family            : "Fraunces"9pt;
+    font-weight            : 900;
+    font-size              : 100px;
+    line-height            : 85px;
+    letter-spacing         : 10px;
+    text-align             : center;
+
+    z-index       : 1;
+    /* Kontent orqasida turishi uchun */
+    pointer-events: none;
+}
+
+/* 2. Swiper konteyneri */
+.collection__swiper {
+    width        : 100%;
+    margin-bottom: 3rem;
+    z-index      : 5;
+    /* H1 dan oldin bo'lishi uchun */
+}
+
+/* Har bir Swiper slayd (Kartochka) */
+.collection__images li {
+    display       : flex;
+    flex-direction: column;
+    position      : relative;
+    width         : 250px;
+    transition    : transform .4s ease;
+    z-index       : 10;
+    list-style    : none;
+    padding-top: 150px;
+}
+
+/* Kofe tushgan shape */
+.collection__shape {
+    width           : 250px;
+    height          : 100px;
+    background-color: var(--first-color);
+    border-radius   : 50%;
+    clip-path       : inset(30% 5 0 0);
+    margin-bottom   : 30px;
+    box-shadow      : 0 10px 5px hsla(166, 85%, 8%, .22);
+}
+
+/* Kofe donalari (Har bir kartochka yonida) */
+.collection__bean-1,
+.collection__bean-2 {
+    width     : 40px;
+    position  : absolute;
+    transition: transform 0.5s ease-out;
+    /* Bosish animatsiyasi uchun */
+    z-index   : 60;
+}
+
+.collection__bean-1 {
+    left  : 15px;
+    top   : 40px;
+    rotate: 15deg;
+}
+
+.collection__bean-2 {
+    right  : 130px;
+    bottom : 200px;
+    rotate : -90deg;
+    filter : blur(2px);
+    z-index: 5;
+}
+
+/* Rasmni bosganda beanlarning surilishi */
+.bean-moved .collection__bean-1 {
+    transform: translateX(-50px) translateY(-10px) rotate(10deg);
+}
+
+.bean-moved .collection__bean-2 {
+    transform: translateX(50px) translateY(-10px) rotate(-100deg);
+}
+
+/* 3. Kofe rasmining shape ustida vertikal aylanishi */
+.collection__image {
+    position : absolute;
+    width    : 300px;
+    /* O'lchamini to'g'irlash */
+    top      : 30px;
+    /* Shape ustida turishi uchun */
+    left     : 35%;
+    transform: translateX(-50%);
+    /* Markazga olish */
+    z-index  : 55;
+    /* Vertikal tarzda aylanish animatsiyasi */
+    animation: verticalRotate 4s ease-in-out infinite alternate;
+}
+
+@keyframes verticalRotate {
+    0% {
+        transform: translateX(-50%) translateY(0) rotateY(0deg);
+    }
+
+    100% {
+        transform: translateX(-50%) translateY(-20px) rotateY(360deg);
+    }
+}
+
+
+/* Matn stillari */
+.collection__title-name,
+.collecttion__text {
+    text-align: center;
+    color     : var(--h3-color);
+}
+
+.collection__title-name {
+    font-family: Fraunces 9pt;
+    font-weight: 900;
+    font-size  : 24px;
+    line-height: 32px;
+}
+
+.collecttion__text {
+    font-family: Barlow;
+    font-weight: 400;
+    font-size  : 16px;
+    line-height: 26px;
+}
+
+/* ================ RESPONSIVE STYLES (750px va KICHIK) ================ */
+@media screen and (max-width: 750px) {
+
+    /* Swiper faqat bitta elementni ko'rsatadi, to'liq ekran kengligida */
+    .collection__images li {
+        width: 100% !important;
+    }
+
+    .collection__title {
+        font-size  : 60px;
+        line-height: 60px;
     }
 }
