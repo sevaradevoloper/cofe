@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&display=swap');
 
 :root {
@@ -111,18 +112,52 @@ img {
     display: flex;
     gap    : 25px;
 }
-
 .nav__link {
-    color         : #333D4B;
-    font-weight   : 700;
-    font-size     : 12px;
+    color: #333D4B;
+    font-weight: 700;
+    font-size: 12px;
     letter-spacing: 0.92px;
     text-transform: uppercase;
-    transition    : color .4s;
+    
+    /* ZARURIY: ::after elementini joylashtirish uchun */
+    position: relative; 
+    display: inline-block; /* Agar link inline bo'lsa */
+    padding: 5px 0; /* ::after uchun joy qoldirish */
+
+    /* Faqat rang o'tishini emas, boshqa o'tishlarni ham qo'shamiz */
+    transition: color .4s, transform .1s; 
 }
 
 .nav__link:hover {
     color: var(--first-color);
+}
+
+/* 🧱 ::after elementini sozlash */
+.nav__link::after {
+    content: ""; /* Psevdo-element ishlashi uchun shart */
+    position: absolute;
+    bottom: 0; /* Linkning eng ostidan boshlanadi */
+    left: 0;
+    
+    /* Dastlabki holat: Balandlik 0, kenglik 100% */
+    width: 100%;
+    height: 0px; 
+    
+    background-color: var(--first-color); /* Rangni belgilang */
+    
+    /* O'tish (Transition) effekti, tezligi 0.1 sekund */
+    transition: height 0.1s ease-out, transform 0.1s ease-out;
+    
+    z-index: -1; /* Matnning orqasida bo'lishi uchun */
+}
+
+/* 🖱 BOSILGANDA (Active State) ::after elementining kattalashishi */
+.nav__link:active::after {
+    /* Bosilganda balandlikni ko'paytiramiz */
+    height: 3px; 
+    
+    /* Ixtiyoriy: Elementni biroz pastga siljitish effekti */
+    transform: translateY(1px); 
 }
 
 /* Mobil menyu tugmalari */
@@ -133,6 +168,7 @@ img {
     font-size: 24px;
     cursor   : pointer;
 }
+
 
 /* Yopish tugmasini menyuning ichida joylashishni aniqlash */
 .nav__close {
@@ -506,7 +542,8 @@ img {
         transform: translateX(-50%) translateY(0) rotateY(0deg);
     }
 
-    100% {
+
+100% {
         transform: translateX(-50%) translateY(-20px) rotateY(360deg);
     }
 }
@@ -643,7 +680,57 @@ img {
 }
 
 @media screen and (max-width: 750px) {
+.opinion-slide {
+    width           : 250px;
+    height          : 282px;
+    padding         : 25px;
+    display         : flex;
+    flex-direction  : column;
+    justify-items   : center;
+    align-items     : center;
+    row-gap         : 25px;
+    background-color: var(--first-color);
+    margin-left     : 25px;
+    border-radius   : 30px;
+    box-shadow      : 0 10px 5px hsla(166, 85%, 8%, .22);
 
+    &:hover {
+        box-shadow   : 0 10px 25px hsla(166, 85%, 8%, .22);
+        margin-bottom: 25px;
+        border       : dashed 2px hsla(166, 85%, 8%, .22);
+    }
+
+    &:nth-child(2) {
+        margin-bottom: 30px;
+    }
+}
+.opinion-slide img{
+    width: 30px;
+    height: 30px;
+}
+.opinion__title-name {
+    font-family   : Fraunces 9pt;
+    font-weight   : 700;
+    font-size     : 16px;
+    line-height   : 22px;
+    letter-spacing: 0px;
+    text-align    : center;
+    color         : #FFFFFF;
+}
+
+
+.opinion__text-name {
+    font-family   : Barlow;
+    font-weight   : 300;
+    font-size     : 10px;
+    line-height   : 20px;
+    letter-spacing: 0px;
+    text-align    : center;
+    color         : #FFFFFF;
+}
+.opinion__images{
+    display: flex;
+}
     .home__container {
         grid-template-columns: 1fr;
         row-gap              : 3rem;
@@ -680,7 +767,6 @@ img {
 
     .opinion__images {
         display       : flex;
-        flex-direction: column;
         justify-items : center;
         row-gap       : 25px;
         align-items   : center;
@@ -801,6 +887,7 @@ img {
     text-align : center;
 }
 
+
 .work__container button {
     display         : block;
     margin          : 0 auto;
@@ -849,13 +936,14 @@ img {
 
 /* ================ FOOTER SECTION STYLES ================ */
 
-.footer {
-    background-color: var(--h3-color);
-    /* To'q kulrang/qora fon rangi */
-    padding         : 30px 0;
+.footer__container {
     display         : flex;
     justify-content : space-between;
     align-items     : center;
+}
+footer{
+    background: var(--h3-color);
+    padding         : 30px 0;
 }
 
 /* 1. Logo rasmi rangini o'zgartirish (Agar logo SVG bo'lsa) */
@@ -877,19 +965,65 @@ img {
     align-items: center;
 }
 
-.footer__nav a {
-    color         : var(--white-color);
-    /* Matn rangini OQ rangga o'zgartirish */
-    font-size     : 14px;
-    font-weight   : var(--font-semi-bold);
+.footer__link {
+    color: var(--white-color);
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.92px;
     text-transform: uppercase;
-    transition    : color 0.3s;
+    
+    /* ::after uchun kerakli sozlamalar */
+    position: relative; 
+    display: inline-block; 
+    padding: 5px 0; 
+
+    /* Umumiy o'tish (transition) */
+    transition: color .4s, transform .1s; 
 }
 
-.footer__nav a:hover {
-    color: var(--first-color);
-    /* Yashil rangga o'zgartirish (hover) */
+/* 🖱 1. HOVER EFFEKTI: RANG VA CHIZIQ */
+.footer__link:hover {
+    color: var(--first-color); /* Rang o'zgarishi */
 }
+
+/* 🧱 ::after elementini sozlash (Dastlabki holat) */
+.footer__link::after {
+    content: "";
+    position: absolute;
+    bottom: 0; 
+    left: 0;
+    
+    /* Dastlabki holat: Balandlik 3px, lekin KENGlik 0 (yashirin) */
+    width: 0%; /* Bu qismni 0% ga o'zgartirdik */
+    height: 3px; /* Balandligini belgiladik */
+    
+    background-color: var(--first-color); 
+    
+    /* O'tish (Transition) effekti */
+    transition: width .4s ease-out; /* HOVER uchun width o'tishini qo'shdik */
+}
+
+/* ⚠️ XATOLIKNI TO'G'RILASH: Hoverda ::after paydo bo'lishi */
+.footer__link:hover::after {
+    /* Hover bo'lganda kenglikni 100% ga o'zgartirish */
+    width: 100%; 
+}
+
+
+/* 👆 2. ACTIVE EFFEKTI: BOSISH Hissi */
+.footer__link:active {
+    /* Bosilganda rangni biroz to'qlashtiramiz */
+    color: #AAAAAA; /* Misol uchun kulrang */
+    
+    /* Bosilish hissi (ichkariga kirish) */
+    transform: translateY(1px); 
+    transition: color 0.1s, transform 0.1s;
+}
+
+/* 🔔 MUHIM IZOH: Active holatida ::after ga TEGINMADIK */
+/* Sababi, chiziqni hoverda ko'rsatib, active'da faqat linkning o'ziga ta'sir qilish odatiy holdir. */
+/* Active vaqtida ham chiziqni o'zgartirmoqchi bo'lsangiz, so'rang. */
+
 
 /* 3. Ijtimoiy tarmoq IKONKALARI rangini OQ qilish */
 .webs {
@@ -913,5 +1047,13 @@ img {
 
 /* ================ MEDIA QUERIES (Mobil qurilmalar uchun) ================ */
 @media screen and (max-width: 768px) {
-    /* ... (mobil qoidalar joyida qoladi) ... */
+   .footer__container {
+    background-color: var(--h3-color);
+    padding         : 30px 0;
+    display         : flex;
+    flex-direction: column;
+    justify-content : space-between;
+    align-items     : center;
+    row-gap: 25px;
+}
 }
