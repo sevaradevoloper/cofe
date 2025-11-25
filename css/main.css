@@ -1,44 +1,33 @@
 @import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&display=swap');
-
 :root {
     --header-height: 3.5rem;
-
-    /*========== Colors ==========*/
-    --first-color    : hsl(166, 80%, 40%);
+    --first-color: hsl(166, 80%, 40%);
     --first-color-alt: hsl(166, 78%, 38%);
-    --body-color     : hsl(166, 95%, 15%);
-    --text-color     : hsl(166, 12%, 40%);
-    --dark-color     : hsl(166, 95%, 12%);
-    --header-color   : hsla(168, 33%, 97%, 0.884);
-    --white-color    : #FEFCF7;
-    --h3-color       : #333D4B;
-
-    /*========== Font and typography ==========*/
-    --body-font       : "Barlow", serif;
-    --second-font     : "Fraunces", serif;
-    --big-font-size   : 2.5rem;
+    --body-color: hsl(166, 95%, 15%);
+    --text-color: hsl(166, 12%, 40%);
+    --dark-color: hsl(166, 95%, 12%);
+    --header-color: hsla(168, 33%, 97%, 0.884);
+    --white-color: #FEFCF7;
+    --h3-color: #333D4B;
+    --body-font: "Barlow", serif;
+    --second-font: "Fraunces", serif;
+    --big-font-size: 2.5rem;
     --normal-font-size: 14px;
-
-    /*========== Font weight ==========*/
-    --font-medium   : 500;
+    --font-medium: 500;
     --font-semi-bold: 600;
-
-    /*========== z index ==========*/
     --z-fixed: 100;
 }
 
-/*========== Responsive typography (Katta ekranlar uchun) ==========*/
 @media screen and (min-width: 1150px) {
     :root {
         --normal-font-size: 1rem;
     }
 }
 
-/*=============== BASE ===============*/
 * {
     box-sizing: border-box;
-    padding   : 0;
-    margin    : 0;
+    padding: 0;
+    margin: 0;
 }
 
 html {
@@ -49,11 +38,10 @@ input,
 button,
 body {
     font-family: var(--body-font);
-    font-size  : var(--normal-font-size);
+    font-size: var(--normal-font-size);
 }
 
 body {
-    /* background-color: var(--body-color); */
     color: var(--text-color);
 }
 
@@ -75,58 +63,50 @@ a {
 }
 
 img {
-    display  : block;
+    display: block;
     max-width: 100%;
-    height   : auto;
+    height: auto;
 }
 
-/*=============== REUSABLE CSS CLASSES ===============*/
 .container {
     max-width: 1200px;
-    margin   : 0 auto;
-    padding  : 0 20px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
-/*=============== HEADER & NAV ===============*/
 .header {
-    position        : fixed;
-    width           : 100%;
-    top             : 0;
-    left            : 0;
-    height          : 100px;
-    padding         : 20px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    height: 100px;
+    padding: 20px 0;
     background-color: var(--header-color);
-    z-index         : var(--z-fixed);
-    transition      : box-shadow .4s;
+    z-index: var(--z-fixed);
+    transition: box-shadow .4s;
 }
 
 .nav {
-    height         : var(--header-height);
-    display        : flex;
+    height: var(--header-height);
+    display: flex;
     justify-content: space-between;
-    align-items    : center;
+    align-items: center;
 }
 
 .nav__list {
     display: flex;
-    gap    : 25px;
+    gap: 25px;
 }
 
 .nav__link {
-    color         : #333D4B;
-    font-weight   : 700;
-    font-size     : 12px;
+    color: #333D4B;
+    font-weight: 700;
+    font-size: 12px;
     letter-spacing: 0.92px;
     text-transform: uppercase;
-
-    /* ZARURIY: ::after elementini joylashtirish uchun */
     position: relative;
-    display : inline-block;
-    /* Agar link inline bo'lsa */
-    padding : 5px 0;
-    /*      ::after uchun joy qoldirish */
-
-    /* Faqat rang o'tishini emas, boshqa o'tishlarni ham qo'shamiz */
+    display: inline-block;
+    padding: 5px 0;
     transition: color .4s, transform .1s;
 }
 
@@ -134,77 +114,56 @@ img {
     color: var(--first-color);
 }
 
-/* 🧱 ::after elementini sozlash */
 .nav__link::after {
-    content : "";
-    /* Psevdo-element ishlashi uchun shart */
+    content: "";
     position: absolute;
-    bottom  : 0;
-    /* Linkning eng ostidan boshlanadi */
-    left    : 0;
-
-    /* Dastlabki holat: Balandlik 0, kenglik 100% */
-    width : 100%;
+    bottom: 0;
+    left: 0;
+    width: 100%;
     height: 0px;
-
     background-color: var(--first-color);
-    /* Rangni belgilang */
-
-    /* O'tish (Transition) effekti, tezligi 0.1 sekund */
     transition: height 0.1s ease-out, transform 0.1s ease-out;
-
     z-index: -1;
-    /* Matnning orqasida bo'lishi uchun */
 }
 
-/* 🖱 BOSILGANDA (Active State) ::after elementining kattalashishi */
 .nav__link:active::after {
-    /* Bosilganda balandlikni ko'paytiramiz */
     height: 3px;
-
-    /* Ixtiyoriy: Elementni biroz pastga siljitish effekti */
     transform: translateY(1px);
 }
 
-/* Mobil menyu tugmalari */
 .nav__toggle,
 .nav__close {
-    display  : none;
-    color    : var(--dark-color);
+    display: none;
+    color: var(--dark-color);
     font-size: 24px;
-    cursor   : pointer;
+    cursor: pointer;
 }
 
-
-/* Yopish tugmasini menyuning ichida joylashishni aniqlash */
 .nav__close {
     position: absolute;
-    top     : 35px;
-    right   : 20px;
+    top: 35px;
+    right: 20px;
 }
 
-/* Menu ko'rinadigan class (JS orqali qo'shiladi) */
 .show-menu {
     top: 0 !important;
-    /* Mobil menyuni ochish */
 }
 
 .shadow-header {
     box-shadow: 0 4px 16px hsla(166, 85%, 8%, .3);
 }
 
-/*=============== MOBILE MENU ===============*/
 @media screen and (max-width: 750px) {
     .header {
-        position        : fixed;
-        width           : 100%;
-        top             : 0;
-        left            : 0;
-        height          : 80px;
-        padding         : 25x 0;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        left: 0;
+        height: 80px;
+        padding: 25x 0;
         background-color: var(--header-color);
-        z-index         : var(--z-fixed);
-        transition      : box-shadow .4s;
+        z-index: var(--z-fixed);
+        transition: box-shadow .4s;
     }
 
     .main {
@@ -212,33 +171,32 @@ img {
     }
 
     .nav__menu {
-        position        : fixed;
-        width           : 100%;
-        top             : -100vh;
-        /* Yashirilgan */
-        left            : 0;
-        height          : 100vh;
+        position: fixed;
+        width: 100%;
+        top: -100vh;
+        left: 0;
+        height: 100vh;
         background-color: var(--header-color);
-        padding-block   : 64px;
-        box-shadow      : 0 8px 16px hsla(166, 85%, 8%, .3);
-        transition      : top .4s;
-        z-index         : var(--z-fixed);
+        padding-block: 64px;
+        box-shadow: 0 8px 16px hsla(166, 85%, 8%, .3);
+        transition: top .4s;
+        z-index: var(--z-fixed);
     }
 
     .nav__list {
         flex-direction: column;
-        gap           : 45px;
-        text-align    : center;
-        margin-top    : 80px;
+        gap: 45px;
+        text-align: center;
+        margin-top: 80px;
     }
 
     .nav__link {
-        color         : #333D4B;
-        font-weight   : 800;
-        font-size     : 15px;
+        color: #333D4B;
+        font-weight: 800;
+        font-size: 15px;
         letter-spacing: 2px;
         text-transform: uppercase;
-        transition    : color .4s;
+        transition: color .4s;
     }
 
     .nav__toggle,
@@ -247,13 +205,8 @@ img {
     }
 }
 
-
-
-
-/* ====home=============== */
-
 .home {
-    padding-top   : 100px;
+    padding-top: 100px;
     padding-bottom: 100px;
 }
 
@@ -262,29 +215,27 @@ img {
 }
 
 .home__container {
-    position   : relative;
+    position: relative;
     padding-top: 3rem;
-    row-gap    : 0;
-
+    row-gap: 0;
 }
 
-
-
 .home__title {
-    color         : var(--white-color);
-    font-family   : "Fraunces"9pt;
-    font-weight   : 900;
-    font-size     : 80px;
-    line-height   : 72px;
+    color: var(--white-color);
+    font-family: "Fraunces"9pt;
+    font-weight: 900;
+    font-size: 80px;
+    line-height: 72px;
     letter-spacing: 0px;
-    text-align    : center;
+    text-align: center;
 }
 
 .home__images {
-    position     : relative;
-    display      : grid;
+    position: relative;
+    display: grid;
     justify-items: center;
-    justify-self : center;
+
+justify-self: center;
 }
 
 .home__images img {
@@ -292,36 +243,36 @@ img {
 }
 
 .home__shape {
-    width           : 280px;
-    height          : 280px;
+    width: 280px;
+    height: 280px;
     background-color: var(--first-color);
-    border-radius   : 50%;
-    clip-path       : inset(50% 0 0 0);
+    border-radius: 50%;
+    clip-path: inset(50% 0 0 0);
 }
 
 .home__splash {
     max-width: initial;
-    width    : 350px;
-    rotate   : 10deg;
-    left     : -3rem;
-    bottom   : .5rem;
+    width: 350px;
+    rotate: 10deg;
+    left: -3rem;
+    bottom: .5rem;
 }
 
 .home__bean-1 {
     left: 1.5rem;
-    top : 1.5rem;
+    top: 1.5rem;
 }
 
 .home__bean-2 {
-    right : 3.5rem;
+    right: 3.5rem;
     bottom: 6.5rem;
     rotate: -90deg;
     filter: blur(2px);
 }
 
 .home__coffee {
-    width : 160px;
-    top   : -3.5rem;
+    width: 160px;
+    top: -3.5rem;
     rotate: 10deg;
 }
 
@@ -331,98 +282,90 @@ img {
 }
 
 .home__ice-1 {
-    width : 50px;
-    left  : 1.5rem;
+    width: 50px;
+    left: 1.5rem;
     bottom: 3rem;
-
 }
 
 .home__ice-2 {
-    width : 40px;
-    top   : 4rem;
-    right : 1.25rem;
+    width: 40px;
+    top: 4rem;
+    right: 1.25rem;
     rotate: 60deg;
 }
 
 .home__leaf {
-    width : 50px;
-    right : 6rem;
+    width: 50px;
+    right: 6rem;
     bottom: -1rem;
     rotate: -15deg;
 }
 
 .home__sticker {
     position: absolute;
-    width   : 75px;
-    right   : 300px;
-    top     : 350px;
-    rotate  : 15deg;
+    width: 75px;
+    right: 300px;
+    top: 350px;
+    rotate: 15deg;
 }
 
 .home__data {
     text-align: center;
-    position  : absolute;
-    top       : 200px;
-    left      : 140px;
-    width     : 250px;
+    position: absolute;
+    top: 200px;
+    left: 140px;
+    width: 250px;
     text-align: initial;
     margin-top: 0;
 }
 
 .home__description {
-    color        : var(--white-color);
+    color: var(--white-color);
     margin-bottom: 1.5rem;
 }
 
 .home__button {
-    display         : inline-flex;
-    justify-content : center;
+    display: inline-flex;
+    justify-content: center;
     background-color: var(--first-color);
-    color           : var(--white-color);
-    padding         : 1rem 2rem;
-    transition      : background .4s, box-shadow .4;
-    font-weight     : var(--font-semi-bold);
-    border          : none;
-
-    &:hover {
-        background-color: var(--first-color-alt);
-        box-shadow      : 0 8px 24px hsla(166, 85%, 8%, .22);
-        border          : 2px dashed hsl(166, 95%, 12%);
-    }
+    color: var(--white-color);
+    padding: 1rem 2rem;
+    transition: background .4s, box-shadow .4;
+    font-weight: var(--font-semi-bold);
+    border: none;
 }
 
+.home__button:hover {
+    background-color: var(--first-color-alt);
+    box-shadow: 0 8px 24px hsla(166, 85%, 8%, .22);
+    border: 2px dashed hsl(166, 95%, 12%);
+}
 
-/*=============== HOME SECTION MOBIL REPSONSIVLIK (750px va KICHIK) ===============*/
 @media screen and (max-width: 750px) {
-
     .home__container {
         grid-template-columns: 1fr;
-        row-gap              : 3rem;
+        row-gap: 3rem;
     }
 
-    /* Rasmni yuqoriga chiqarish */
     .home__images {
-        order        : 1;
+        order: 1;
         margin-bottom: 15px;
     }
 
-    /* Ma'lumot blokini pastga tushirish (Asosiy talab) */
     .home__data {
-        order     : 2;
-        /* Absolyut joylashuvni o'chirib, elementni tabiiy oqimga qaytarish */
-        position  : static !important;
-        width     : 100% !important;
+        order: 2;
+        position: static !important;
+        width: 100% !important;
         text-align: center !important;
-        /* Absolyut joylashuvdan qolgan qoldiq qoidalarini bekor qilish */
-        top       : auto !important;
-        left      : auto !important;
-        margin    : 0 auto;
+        top: auto !important;
+        left: auto !important;
+        margin: 0 auto;
     }
 
     .home__title {
-        font-size  : 50px;
+        font-size: 50px;
         line-height: 55px;
-        text-align : center;
+        text-align: center;
     }
 
     .home__sticker {
@@ -430,96 +373,83 @@ img {
     }
 }
 
-/* ================ COLLECTION SECTION STYLES ================ */
-
 .collection {
     background-color: var(--white-color);
-    padding-top     : 100px;
-    padding-bottom  : 50px;
-    position        : relative;
+    padding-top: 100px;
+    padding-bottom: 50px;
+    position: relative;
 }
 
-/* 1. Gradient sarlavha (Our Collection) */
 .collection__title {
-    position               : absolute;
-    top                    : 50px;
-    left                   : 0;
-    right                  : 0;
-    /* Tepasi to'q kulrang, pasti oq gradient */
-    background-image       : linear-gradient(to bottom, #666565, #f5f1f1);
+    position: absolute;
+    top: 50px;
+    left: 0;
+    right: 0;
+    background-image: linear-gradient(to bottom, #666565, #f5f1f1);
     -webkit-background-clip: text;
-    background-clip        : text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
-    -text-fill-color       : transparent;
-    color                  : transparent;
-    font-family            : "Fraunces"9pt;
-    font-weight            : 900;
-    font-size              : 100px;
-    line-height            : 85px;
-    letter-spacing         : 10px;
-    text-align             : center;
-
-    z-index       : 1;
-    /* Kontent orqasida turishi uchun */
+    -text-fill-color: transparent;
+    color: transparent;
+    font-family: "Fraunces"9pt;
+    font-weight: 900;
+    font-size: 100px;
+    line-height: 85px;
+    letter-spacing: 10px;
+    text-align: center;
+    z-index: 1;
     pointer-events: none;
 }
 
-/* 2. Swiper konteyneri */
 .collection__swiper {
-    width        : 100%;
+    width: 100%;
     margin-bottom: 3rem;
-    z-index      : 5;
-    /* H1 dan oldin bo'lishi uchun */
+    z-index: 5;
 }
 
-/* Har bir Swiper slayd (Kartochka) */
 .collection__images li {
-    display       : flex;
+    display: flex;
     flex-direction: column;
-    position      : relative;
-    width         : 250px;
-    transition    : transform .4s ease;
-    z-index       : 10;
-    list-style    : none;
-    padding-top   : 150px;
+    position: relative;
+    width: 250px;
+    transition: transform .4s ease;
+    z-index: 10;
+    list-style: none;
+    padding-top: 150px;
 }
 
-/* Kofe tushgan shape */
 .collection__shape {
-    width           : 250px;
-    height          : 100px;
+    width: 250px;
+    height: 100px;
     background-color: var(--first-color);
-    border-radius   : 50%;
-    clip-path       : inset(30% 5 0 0);
-    margin-bottom   : 30px;
-    box-shadow      : 0 10px 5px hsla(166, 85%, 8%, .22);
+    border-radius: 50%;
+    clip-path: inset(30% 5 0 0);
+    margin-bottom: 30px;
+    box-shadow: 0 10px 5px hsla(166, 85%, 8%, .22);
 }
 
-/* Kofe donalari (Har bir kartochka yonida) */
 .collection__bean-1,
 .collection__bean-2 {
-    width     : 40px;
-    position  : absolute;
+    width: 40px;
+    position: absolute;
     transition: transform 0.5s ease-out;
-    /* Bosish animatsiyasi uchun */
-    z-index   : 60;
+    z-index: 60;
 }
 
 .collection__bean-1 {
-    left  : 15px;
-    top   : 40px;
+    left: 15px;
+    top: 40px;
     rotate: 15deg;
 }
 
 .collection__bean-2 {
-    right  : 130px;
-    bottom : 200px;
-    rotate : -90deg;
-    filter : blur(2px);
+    right: 130px;
+    bottom: 200px;
+    rotate: -90deg;
+    filter: blur(2px);
     z-index: 5;
 }
 
-/* Rasmni bosganda beanlarning surilishi */
 .bean-moved .collection__bean-1 {
     transform: translateX(-50px) translateY(-10px) rotate(10deg);
 }
@@ -528,18 +458,15 @@ img {
     transform: translateX(50px) translateY(-10px) rotate(-100deg);
 }
 
-/* 3. Kofe rasmining shape ustida vertikal aylanishi */
 .collection__image {
-    position : absolute;
-    width    : 300px;
-    /* O'lchamini to'g'irlash */
-    top      : 30px;
-    /* Shape ustida turishi uchun */
-    left     : 35%;
-    transform: translateX(-50%);
-    /* Markazga olish */
-    z-index  : 55;
-    /* Vertikal tarzda aylanish animatsiyasi */
+    position: absolute;
+    width: 300px;
+    top: 30px;
+    left: 35%;
+
+
+transform: translateX(-50%);
+    z-index: 55;
     animation: verticalRotate 4s ease-in-out infinite alternate;
 }
 
@@ -548,209 +475,158 @@ img {
         transform: translateX(-50%) translateY(0) rotateY(0deg);
     }
 
-
     100% {
         transform: translateX(-50%) translateY(-20px) rotateY(360deg);
     }
 }
 
-
-/* Matn stillari */
 .collection__title-name,
 .collecttion__text {
     text-align: center;
-    color     : var(--h3-color);
+    color: var(--h3-color);
 }
 
 .collection__title-name {
     font-family: Fraunces 9pt;
     font-weight: 900;
-    font-size  : 24px;
+    font-size: 24px;
     line-height: 32px;
 }
 
 .collecttion__text {
     font-family: Barlow;
     font-weight: 400;
-    font-size  : 16px;
+    font-size: 16px;
     line-height: 26px;
 }
 
-/* ================ RESPONSIVE STYLES (750px va KICHIK) ================ */
 @media screen and (max-width: 750px) {
-
-    /* Swiper faqat bitta elementni ko'rsatadi, to'liq ekran kengligida */
     .collection__images li {
         width: 100% !important;
     }
 
     .collection__title {
-        font-size  : 60px;
+        font-size: 60px;
         line-height: 60px;
     }
 }
 
 .opinion {
     background-color: var(--h3-color);
-    padding-top     : 50px;
-    padding-bottom  : 250px;
-    position        : relative;
+    padding-top: 50px;
+    padding-bottom: 250px;
+    position: relative;
 }
 
 .opinion__images {
-    display        : flex;
+    display: flex;
     justify-content: center;
-    align-items    : center;
-    position       : absolute;
-    left           : 0;
-    right          : 0;
-    bottom         : -80px;
+    align-items: center;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -80px;
 }
 
 .opinion__title {
-    font-family   : Fraunces 9pt;
-    font-weight   : 900;
-    font-size     : 40px;
-    line-height   : 48px;
+    font-family: Fraunces 9pt;
+    font-weight: 900;
+    font-size: 40px;
+    line-height: 48px;
     letter-spacing: 0px;
-    text-align    : center;
-    color         : var(--white-color);
-    margin-bottom : 25px;
+    text-align: center;
+    color: var(--white-color);
+    margin-bottom: 25px;
 }
 
 .opinion__text {
-    font-family   : Barlow;
-    font-weight   : 400;
-    font-size     : 16px;
-    line-height   : 26px;
+    font-family: Barlow;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 26px;
     letter-spacing: 0px;
-    text-align    : center;
-    color         : var(--white-color);
-    max-width     : 540px;
-    margin        : 0 auto;
+    text-align: center;
+    color: var(--white-color);
+    max-width: 540px;
+    margin: 0 auto;
 }
 
 .opinion-slide {
-    width           : 320px;
-    height          : 282px;
-    padding         : 25px;
-    display         : flex;
-    flex-direction  : column;
-    justify-items   : center;
-    align-items     : center;
-    row-gap         : 25px;
+    width: 320px;
+    height: 282px;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+    row-gap: 25px;
     background-color: var(--first-color);
-    margin-left     : 25px;
-    border-radius   : 30px;
-    box-shadow      : 0 10px 5px hsla(166, 85%, 8%, .22);
+    margin-left: 25px;
+    border-radius: 30px;
+    box-shadow: 0 10px 5px hsla(166, 85%, 8%, .22);
+}
 
-    &:hover {
-        box-shadow   : 0 10px 25px hsla(166, 85%, 8%, .22);
-        margin-bottom: 25px;
-        border       : dashed 2px hsla(166, 85%, 8%, .22);
-    }
+.opinion-slide:hover {
+    box-shadow: 0 10px 25px hsla(166, 85%, 8%, .22);
+    margin-bottom: 25px;
+    border: dashed 2px hsla(166, 85%, 8%, .22);
+}
 
-    &:nth-child(2) {
-        margin-bottom: 30px;
-    }
+.opinion-slide:nth-child(2) {
+    margin-bottom: 30px;
 }
 
 .opinion__image {
-    width : 72px;
+    width: 72px;
     height: 72px;
 }
 
 .opinion__title-name {
-    font-family   : Fraunces 9pt;
-    font-weight   : 900;
-    font-size     : 24px;
-    line-height   : 32px;
+    font-family: Fraunces 9pt;
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 32px;
     letter-spacing: 0px;
-    text-align    : center;
-    color         : #FFFFFF;
+    text-align: center;
+    color: #FFFFFF;
 }
 
 .opinion__text-name {
-    font-family   : Barlow;
-    font-weight   : 400;
-    font-size     : 16px;
-    line-height   : 26px;
+    font-family: Barlow;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 26px;
     letter-spacing: 0px;
-    text-align    : center;
-    color         : #FFFFFF;
+    text-align: center;
+    color: #FFFFFF;
 }
-
 
 .work {
     margin-top: 100px;
 }
 
 @media screen and (max-width: 750px) {
-.opinion{
-    margin-bottom: 700px;
-}
-    .opinion__images {
-    display        : flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items    : center;
-    position       : absolute;
-    left           : 0;
-    right          : 0;
-    top: 700px;
-}
-
-    .home__container {
-        grid-template-columns: 1fr;
-        row-gap              : 3rem;
-    }
-
-    /* Rasmni yuqoriga chiqarish */
-    .home__images {
-        order        : 1;
-        margin-bottom: 15px;
-    }
-
-    /* Ma'lumot blokini pastga tushirish (Asosiy talab) */
-    .home__data {
-        order     : 2;
-        /* Absolyut joylashuvni o'chirib, elementni tabiiy oqimga qaytarish */
-        position  : static !important;
-        width     : 100% !important;
-        text-align: center !important;
-        /* Absolyut joylashuvdan qolgan qoldiq qoidalarini bekor qilish */
-        top       : auto !important;
-        left      : auto !important;
-        margin    : 0 auto;
-    }
-
-    .home__title {
-        font-size  : 50px;
-        line-height: 55px;
-        text-align : center;
-    }
-
-    .home__sticker {
-        display: none;
+    .opinion {
+        margin-bottom: 700px;
     }
 
     .opinion__images {
-        display      : flex;
-        justify-items: center;
-        row-gap      : 25px;
-        align-items  : center;
-        position     : absolute;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 700px;
+        row-gap: 25px;
     }
 }
-
-
-/* ================ WORK SECTION STYLES ================ */
 
 .work {
     background-color: var(--white-color);
-    /* Oq fon */
-    padding         : 100px 0;
-    position        : relative;
+    padding: 100px 0;
+    position: relative;
 }
 
 .work__container {
@@ -758,294 +634,230 @@ img {
 }
 
 .work__title {
-    color        : var(--text-color);
-    font-family  : var(--second-font);
-    font-weight  : 900;
-    font-size    : 30px;
-    text-align   : left;
+    color: var(--text-color);
+    font-family: var(--second-font);
+    font-weight: 900;
+    font-size: 30px;
+    text-align: left;
     margin-bottom: 80px;
 }
 
 .work__images {
-    display        : flex;
+    display: flex;
     justify-content: space-between;
-    list-style     : none;
-    padding        : 0;
-    margin-bottom  : 50px;
-    position       : relative;
-    /* Mobil dizayn uchun vertikal joylashish */
-    flex-direction : column;
-    align-items    : center;
+    list-style: none;
+    padding: 0;
+    margin-bottom: 50px;
+    position: relative;
+    flex-direction: column;
+    align-items: center;
 }
 
-/* 1. Bosqichlar orasidagi ulovchi chiziq (Katta ekranlar uchun) */
 .work__images::before {
-    content         : '';
-    position        : absolute;
-    top             : 15px;
-    left            : 0;
-    width           : 100%;
-    height          : 2px;
+    content: '';
+    position: absolute;
+    top: 15px;
+    left: 0;
+    width: 100%;
+    height: 2px;
     background-color: #fdd8d4;
-    /* Och rangli chiziq */
-    z-index         : 1;
-    display         : none;
-    /* Dastlab yashiriladi, katta ekranda ko'rsatiladi */
+    z-index: 1;
+    display: none;
 }
 
 .work-slide {
-    position     : relative;
-    max-width    : 350px;
-    padding-top  : 50px;
-    /* Dumaloq element uchun joy */
-    z-index      : 2;
-    text-align   : center;
+    position: relative;
+    max-width: 350px;
+    padding-top: 50px;
+    z-index: 2;
+    text-align: center;
     margin-bottom: 40px;
-    /* Mobil margin */
 }
 
-/* 2. Dumaloq check elementi */
 .work-slide::before {
-    content         : '';
-    position        : absolute;
-    top             : 0;
-    left            : 50%;
-    /* Mobil ko'rinishda markazga */
-    transform       : translateX(-50%);
-    width           : 31px;
-    height          : 31px;
-    border          : 2px solid var(--first-color);
-    /* Yashil ramka */
-    border-radius   : 50%;
-    background-color: var(--white-color);
-    z-index         : 3;
-    transition      : background-color 0.4s;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 31px;
+    height: 31px;
+    border: 2px solid var(--first-color);
+    border-radius: 50%;
+
+background-color: var(--white-color);
+    z-index: 3;
+    transition: background-color 0.4s;
 }
 
-/* Faqat birinchi elementga yoki aktiv elementga yashil fon berish (JS orqali amalga oshiriladi) */
 .work-slide:first-child::before,
 .work-slide.active::before {
     background-color: var(--first-color);
-    border-color    : var(--first-color);
+    border-color: var(--first-color);
 }
 
-/* Kontent stillari */
 .work-slide h2 {
-    font-family  : var(--second-font);
-    font-weight  : 900;
-    font-size    : 72px;
-    color        : var(--first-color);
+    font-family: var(--second-font);
+    font-weight: 900;
+    font-size: 72px;
+    color: var(--first-color);
     margin-bottom: 24px;
 }
 
 .work__title-name {
-    font-family  : var(--second-font);
-    font-weight  : 900;
-    font-size    : 28px;
-    line-height  : 40px;
-    color        : var(--h3-color);
+    font-family: var(--second-font);
+    font-weight: 900;
+    font-size: 28px;
+    line-height: 40px;
+    color: var(--h3-color);
     margin-bottom: 24px;
 }
 
 .work__text-name {
     font-family: var(--body-font);
     font-weight: 400;
-    font-size  : 16px;
+    font-size: 16px;
     line-height: 26px;
-    color      : var(--h3-color);
-    text-align : center;
+    color: var(--h3-color);
+    text-align: center;
 }
-
 
 .work__container button {
-    display         : block;
-    margin          : 0 auto;
+    display: block;
+    margin: 0 auto;
     background-color: var(--first-color);
-    color           : var(--white-color);
-    padding         : 1rem 2rem;
-    transition      : background .4s, box-shadow .4;
-    font-weight     : var(--font-semi-bold);
-    border          : none;
-    cursor          : pointer;
+    color: var(--white-color);
+    padding: 1rem 2rem;
+    transition: background .4s, box-shadow .4;
+    font-weight: var(--font-semi-bold);
+    border: none;
+    cursor: pointer;
 }
 
-/* ================ MEDIA QUERIES (Katta ekranlar uchun) ================ */
 @media screen and (min-width: 750px) {
     .work__images {
-        flex-direction : row;
-        /* Gorizontal joylashish */
+        flex-direction: row;
         justify-content: space-between;
     }
 
     .work__images::before {
         display: block;
-        /* Chiziqni ko'rsatish */
-        /* work-slide o'lchamiga moslab left va width ni to'g'irlash */
-        width  : calc(100% - 70px);
-        left   : 35px;
+        width: calc(100% - 70px);
+        left: 35px;
     }
 
     .work-slide {
-        text-align   : left;
-        padding-top  : 100px;
-        max-width    : 30%;
+        text-align: left;
+        padding-top: 100px;
+        max-width: 30%;
         margin-bottom: 0;
     }
 
-    /* Dumaloq elementni chap tomonda joylashtirish */
     .work-slide::before {
-        left     : 0;
+        left: 0;
         transform: none;
     }
-
-    /* Faqat aktiv bo'lgan slaydlar oldidagi chiziqni yashil qilish (JS talab etadi) */
-    /* Bu funksiya JSda qo'shimcha CSS klasslarini qo'shish orqali amalga oshiriladi */
 }
 
-
-/* ================ FOOTER SECTION STYLES ================ */
-
 .footer__container {
-    display        : flex;
+    display: flex;
     justify-content: space-between;
-    align-items    : center;
+    align-items: center;
 }
 
 footer {
     background: var(--h3-color);
-    padding   : 30px 0;
+    padding: 30px 0;
 }
 
-/* 1. Logo rasmi rangini o'zgartirish (Agar logo SVG bo'lsa) */
-/* Agar logo SVG bo'lsa va rangini CSS orqali o'zgartirish kerak bo'lsa, 
-   CSS filtrlari yordam berishi mumkin yoki SVG ichida fill rangini o'zgartirish kerak. 
-   Lekin eng oson yo'li - agar logoning oq versiyasi mavjud bo'lsa, uni ishlatish. 
-   Agar sizning LOGO.SVG faylingiz qora bo'lsa va uni oq qilish kerak bo'lsa, ushbu filtrni qo'shing: */
 .footer a img {
-    /* Logo rasmining ko'rinishini oq qilish uchun (Agar fon qora bo'lsa) */
     filter: invert(1) grayscale(1) brightness(2);
-    /* Agar bu ishlamasa, logoning oq versiyasini ishlatish tavsiya etiladi. */
 }
 
-
-/* 2. Navigatsiya havolalari rangini OQ qilish */
 .footer__nav {
-    display    : flex;
-    gap        : 25px;
+    display: flex;
+    gap: 25px;
     align-items: center;
 }
 
 .footer__link {
-    color         : var(--white-color);
-    font-weight   : 700;
-    font-size     : 12px;
+    color: var(--white-color);
+    font-weight: 700;
+    font-size: 12px;
     letter-spacing: 0.92px;
     text-transform: uppercase;
-
-    /* ::after uchun kerakli sozlamalar */
     position: relative;
-    display : inline-block;
-    padding : 5px 0;
-
-    /* Umumiy o'tish (transition) */
+    display: inline-block;
+    padding: 5px 0;
     transition: color .4s, transform .1s;
 }
 
-/* 🖱 1. HOVER EFFEKTI: RANG VA CHIZIQ */
 .footer__link:hover {
     color: var(--first-color);
-    /* Rang o'zgarishi */
 }
 
-/* 🧱 ::after elementini sozlash (Dastlabki holat) */
 .footer__link::after {
-    content : "";
+    content: "";
     position: absolute;
-    bottom  : 0;
-    left    : 0;
-
-    /* Dastlabki holat: Balandlik 3px, lekin KENGlik 0 (yashirin) */
-    width : 0%;
-    /* Bu qismni 0% ga o'zgartirdik */
+    bottom: 0;
+    left: 0;
+    width: 0%;
     height: 3px;
-    /* Balandligini belgiladik */
-
     background-color: var(--first-color);
-
-    /* O'tish (Transition) effekti */
     transition: width .4s ease-out;
-    /* HOVER uchun width o'tishini qo'shdik */
 }
 
-/* ⚠️ XATOLIKNI TO'G'RILASH: Hoverda ::after paydo bo'lishi */
 .footer__link:hover::after {
-    /* Hover bo'lganda kenglikni 100% ga o'zgartirish */
     width: 100%;
 }
 
-
-/* 👆 2. ACTIVE EFFEKTI: BOSISH Hissi */
 .footer__link:active {
-    /* Bosilganda rangni biroz to'qlashtiramiz */
     color: #AAAAAA;
-    /* Misol uchun kulrang */
-
-    /* Bosilish hissi (ichkariga kirish) */
-    transform : translateY(1px);
+    transform: translateY(1px);
     transition: color 0.1s, transform 0.1s;
 }
 
-/* 🔔 MUHIM IZOH: Active holatida ::after ga TEGINMADIK */
-/* Sababi, chiziqni hoverda ko'rsatib, active'da faqat linkning o'ziga ta'sir qilish odatiy holdir. */
-/* Active vaqtida ham chiziqni o'zgartirmoqchi bo'lsangiz, so'rang. */
-
-
-/* 3. Ijtimoiy tarmoq IKONKALARI rangini OQ qilish */
 .webs {
-    display    : flex;
-    gap        : 25px;
+    display: flex;
+    gap: 25px;
     align-items: center;
 }
 
 .webs a i {
-    font-size : 30px;
-    color     : var(--white-color);
-    /* Ikonka rangini OQ rangga o'zgartirish */
+    font-size: 30px;
+    color: var(--white-color);
     transition: color 0.3s;
 }
 
 .webs a i:hover {
     color: var(--first-color);
-    /* Yashil rangga o'zgartirish (hover) */
 }
 
-
-/* ================ MEDIA QUERIES (Mobil qurilmalar uchun) ================ */
 @media screen and (max-width: 768px) {
     .footer__container {
         background-color: var(--h3-color);
-        padding         : 30px 0;
-        display         : flex;
-        flex-direction  : column;
-        justify-content : space-between;
-        align-items     : center;
-        row-gap         : 25px;
+        padding: 30px 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        row-gap: 25px;
     }
 }
 
 .about {
-    padding-top   : 100px;
+    padding-top: 100px;
     padding-bottom: 100px;
 }
 
 .about__container {
-    position       : relative;
-    padding-top    : 3rem;
-    row-gap        : 0;
-    display        : flex;
-    align-items    : center;
+    position: relative;
+    padding-top: 3rem;
+    row-gap: 0;
+    display: flex;
+    align-items: center;
     justify-content: center;
-    gap            : 200px;
+    gap: 200px;
 }
 
 .about__container {
@@ -1057,34 +869,34 @@ footer {
 }
 
 .about .about__title .about__description {
-    color        : var(--white-color);
+    color: var(--white-color);
     margin-bottom: 1.5rem;
 }
 
 .about__title {
-    font-family   : Fraunces 9pt;
-    font-weight   : 900;
-    font-size     : 40px;
-    line-height   : 48px;
+    font-family: Fraunces 9pt;
+    font-weight: 900;
+    font-size: 40px;
+    line-height: 48px;
     letter-spacing: 0px;
-    color         : var(--white-color);
+    color: var(--white-color);
 }
 
 .about__description {
-    font-family   : Barlow;
-    font-weight   : 400;
-    font-size     : 16px;
-    color         : var(--white-color);
-    line-height   : 26px;
+    font-family: Barlow;
+    font-weight: 400;
+    font-size: 16px;
+    color: var(--white-color);
+    line-height: 26px;
     letter-spacing: 0px;
-    max-width     : 445px;
-    margin        : 0 auto;
+    max-width: 445px;
+    margin: 0 auto;
 }
 
 .about__images {
-    position    : relative;
-    display     : grid;
-    place-items : center;
+    position: relative;
+    display: grid;
+    place-items: center;
     justify-self: center;
 }
 
@@ -1093,10 +905,10 @@ footer {
 }
 
 .about__shape {
-    width           : 300px;
-    height          : 300px;
+    width: 300px;
+    height: 300px;
     background-color: var(--first-color);
-    border-radius   : 50%;
+border-radius: 50%;
 }
 
 .about__leaf-2,
@@ -1105,36 +917,36 @@ footer {
 }
 
 .about__leaf-1 {
-    top   : .5rem;
-    left  : 3.5rem;
+    top: .5rem;
+    left: 3.5rem;
     rotate: -105deg;
 }
 
 .about__leaf-2 {
-    top   : 7.7rem;
-    right : 2.5rem;
+    top: 7.7rem;
+    right: 2.5rem;
     rotate: -15deg;
 }
 
 .about__coffee {
-    width : 280px;
+    width: 280px;
     filter: drop-shadow(0 8px 16px hsla(166, 85%, 8%, .5));
 }
 
 .commitment {
-    padding-top   : 100px;
+    padding-top: 100px;
     padding-bottom: 100px;
-    background    : none;
+    background: none;
 }
 
 .commitment__container {
-    position       : relative;
-    padding-top    : 3rem;
-    row-gap        : 0;
-    display        : flex;
-    align-items    : center;
+    position: relative;
+    padding-top: 3rem;
+    row-gap: 0;
+    display: flex;
+    align-items: center;
     justify-content: center;
-    gap            : 200px;
+    gap: 200px;
 }
 
 .commitment__container {
@@ -1146,34 +958,34 @@ footer {
 }
 
 .commitment .commitment__title .commitment__description {
-    color        : var(--h3-color);
+    color: var(--h3-color);
     margin-bottom: 1.5rem;
 }
 
 .commitment__title {
-    font-family   : Fraunces 9pt;
-    font-weight   : 900;
-    font-size     : 40px;
-    line-height   : 48px;
+    font-family: Fraunces 9pt;
+    font-weight: 900;
+    font-size: 40px;
+    line-height: 48px;
     letter-spacing: 0px;
-    color         : var(--h3-color);
+    color: var(--h3-color);
 }
 
 .commitment__description {
-    font-family   : Barlow;
-    font-weight   : 400;
-    font-size     : 16px;
-    color         : var(--h3-color);
-    line-height   : 26px;
+    font-family: Barlow;
+    font-weight: 400;
+    font-size: 16px;
+    color: var(--h3-color);
+    line-height: 26px;
     letter-spacing: 0px;
-    max-width     : 445px;
-    margin        : 0 auto;
+    max-width: 445px;
+    margin: 0 auto;
 }
 
 .commitment__images {
-    position    : relative;
-    display     : grid;
-    place-items : center;
+    position: relative;
+    display: grid;
+    place-items: center;
     justify-self: center;
 }
 
@@ -1182,32 +994,31 @@ footer {
 }
 
 .commitment__shape {
-    width           : 400px;
-    height          : 400px;
+    width: 400px;
+    height: 400px;
     background-color: hsl(166, 88%, 20%);
-    border-radius   : 50%;
+    border-radius: 50%;
     z-index: -1;
 }
 
 .commitment__coffee {
-    width : 280px;
+    width: 280px;
     filter: drop-shadow(0 8px 16px hsl(166, 96%, 29%));
 }
 
-
 .quality {
-    padding   : 50px 0;
+    padding: 50px 0;
     margin-top: 150px;
 }
 
 .quality__container {
-    position       : relative;
-    padding-top    : 3rem;
-    row-gap        : 0;
-    display        : flex;
-    align-items    : center;
+    position: relative;
+    padding-top: 3rem;
+    row-gap: 0;
+    display: flex;
+    align-items: center;
     justify-content: center;
-    gap            : 200px;
+    gap: 200px;
 }
 
 .quality__container {
@@ -1219,52 +1030,52 @@ footer {
 }
 
 .quality .quality__title .quality__description {
-    color        : var(--white-color);
+    color: var(--white-color);
     margin-bottom: 1.5rem;
 }
 
 .quality__title {
-    font-family   : Fraunces 9pt;
-    font-weight   : 900;
-    font-size     : 40px;
-    line-height   : 48px;
+    font-family: Fraunces 9pt;
+    font-weight: 900;
+    font-size: 40px;
+    line-height: 48px;
     letter-spacing: 0px;
-    color         : var(--white-color);
+    color: var(--white-color);
 }
 
 .quality__description {
-    font-family   : Barlow;
-    font-weight   : 400;
-    font-size     : 16px;
-    color         : var(--white-color);
-    line-height   : 26px;
+    font-family: Barlow;
+    font-weight: 400;
+    font-size: 16px;
+    color: var(--white-color);
+    line-height: 26px;
     letter-spacing: 0px;
-    max-width     : 445px;
-    margin        : 0 auto;
+    max-width: 445px;
+    margin: 0 auto;
 }
 
 .quality__images {
-    position    : relative;
-    display     : grid;
-    place-items : center;
+    position: relative;
+    display: grid;
+    place-items: center;
     justify-self: center;
-    bottom      : 150px;
+    bottom: 150px;
 }
 
 .quality__images img {
     position: absolute;
-    rotate  : 10deg;
-    bottom  : 15px;
+    rotate: 10deg;
+    bottom: 15px;
 }
 
 .quality__shape {
-    width        : 350px;
-    height       : 350px;
+    width: 350px;
+    height: 350px;
     border-radius: 50%;
 }
 
 .quality__coffee {
-    width : 250px;
+    width: 250px;
     filter: drop-shadow(0 8px 16px hsla(166, 96%, 46%, 0.945));
 }
 
@@ -1274,208 +1085,167 @@ footer {
 }
 
 .quality__leaf-1 {
-    top   : 4rem;
-    left  : 1rem;
+    top: 4rem;
+    left: 1rem;
     rotate: -105deg;
 }
 
 .quality__leaf-2 {
-    top   : 12rem;
-    right : 2.5rem;
+    top: 12rem;
+    right: 2.5rem;
     rotate: -15deg;
 }
 
-/* ================ HEADQUARTERS SECTION STYLES ================ */
-
 .headquarters {
     background-color: var(--white-color);
-    /* Asosiy fon oq */
-    padding         : 100px 0;
-    position        : relative;
-    text-align      : center;
+    padding: 100px 0;
+    position: relative;
+    text-align: center;
 }
 
 .headquarters__container {
-    /* Konteyner ichidagi elementlar uchun umumiy sozlamalar */
     padding-top: 50px;
 }
 
 .headquarters__title {
-    color        : var(--text-color);
-    /* To'q kulrang matn rangini foydalaning */
-    font-family  : var(--second-font);
-    font-weight  : 900;
-    font-size    : 30px;
+    color: var(--text-color);
+    font-family: var(--second-font);
+    font-weight: 900;
+    font-size: 30px;
     margin-bottom: 70px;
-    text-align   : center;
-    /* Yuqoridagi work sectiondagi ranglarga moslash uchun yengilroq qildim */
+    text-align: center;
 }
 
 .headquarters__images {
-    display       : flex;
+    display: flex;
     flex-direction: column;
-    /* Mobil telefonda vertikal joylashadi */
-    align-items   : center;
-    gap           : 40px;
-    list-style    : none;
-    padding       : 0;
+    align-items: center;
+    gap: 40px;
+    list-style: none;
+    padding: 0;
 }
 
 .headquarters-slide {
-    display       : flex;
+    display: flex;
     flex-direction: column;
-    align-items   : center;
-    text-align    : center;
-    max-width     : 300px;
-    padding       : 20px;
-    transition    : transform 0.3s ease, box-shadow 0.3s ease;
+    align-items: center;
+    text-align: center;
+    max-width: 300px;
+    padding: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* 1. Karta ustiga hover effekti */
 .headquarters-slide:hover {
-    transform : translateY(-5px);
-    /* Yuqoriga biroz ko'tariladi */
+    transform: translateY(-5px);
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-    /* Yengil soya qo'shiladi */
 }
 
-/* Kartochka ichidagi rasm (Mamlakat ikonkasi) */
 .headquarters-slide img {
-    width        : 45px;
-    /* Ikona o'lchami */
-    height       : 45px;
-    object-fit   : contain;
+    width: 45px;
+    height: 45px;
+    object-fit: contain;
     margin-bottom: 24px;
-    transition   : transform 0.4s;
+    transition: transform 0.4s;
 }
 
-/* 2. Ikona ustiga hover effekti (Biroz aylanish) */
 .headquarters-slide:hover img {
-    transform: rotate(5deg) scale(1.05);
+
+transform: rotate(5deg) scale(1.05);
 }
 
-/* Mamlakat nomi sarlavhasi */
 .headquarters__title-name {
-    font-family  : var(--second-font);
-    font-weight  : 900;
-    font-size    : 24px;
-    line-height  : 32px;
-    color        : var(--h3-color);
+    font-family: var(--second-font);
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 32px;
+    color: var(--h3-color);
     margin-bottom: 12px;
 }
 
-/* Manzil va telefon raqami havolalari */
 .headquarters__text-name {
-    font-family    : var(--body-font);
-    font-weight    : 400;
-    font-size      : 16px;
-    line-height    : 26px;
-    color          : var(--text-color);
-    /* Asosiy matn rangi */
+    font-family: var(--body-font);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 26px;
+    color: var(--text-color);
     text-decoration: none;
-    display        : block;
-    /* Har bir manzil satri alohida satrda chiqishi uchun */
-    transition     : color 0.3s ease;
+    display: block;
+    transition: color 0.3s ease;
 }
 
-/* 3. Havola ustiga hover effekti (rang o'zgarishi) */
 .headquarters__text-name:hover {
     color: var(--first-color);
-    /* Yashil rangga o'zgarishi */
 }
 
-
-/* ================ MEDIA QUERIES (Katta ekranlar uchun) ================ */
 @media screen and (min-width: 768px) {
     .headquarters__images {
-        flex-direction : row;
-        /* Gorizontal joylashadi */
+        flex-direction: row;
         justify-content: space-around;
-        gap            : 30px;
+        gap: 30px;
     }
 
     .headquarters-slide {
         max-width: 33%;
-        /* Teng bo'lishi uchun */
     }
 }
 
-
-
-/* ================ PLAN SECTION STYLES ================ */
-
 .plan {
-    position                                                                 : relative;
-    /* Video fonni joylashtirish uchun */
-    padding-top                                                              : 100px;
-    padding-bottom                                                           : 100px;
-    min-height                                                               : 80vh;
-    /* Agar kontent kam bo'lsa ham, yetarlicha balandlikka ega bo'lishi uchun */
-    overflow                                                                 : hidden;
-    /* Kontent fon bilan kontrast hosil qilishi uchun matn rangini oq qilamiz: */
-    color                                                                    : var(--white-color);
+    position: relative;
+    padding-top: 100px;
+    padding-bottom: 100px;
+    min-height: 80vh;
+    overflow: hidden;
+    color: var(--white-color);
 }
 
-/* 1. Video o'rab turuvchi div (To'liq fonni qoplash uchun) */
 .video {
-    position        : absolute;
-    top             : 0;
-    left            : 0;
-    width           : 100%;
-    height          : 100%;
-    z-index         : 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
 }
 
-/* 2. Video elementining o'zi */
 .videofon {
-    width              : 100%;
-    height             : 100%;
-    object-fit         : cover;
-    /* Background-image: cover kabi ishlash uchun */
-    z-index            : 2;
-    /* Video, qoraytiruvchi qatlamdan ham orqada turishi uchun */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 2;
     rotate: 360deg;
 }
 
-/* 3. Kontent stili (video ustida) */
 .plan__container {
-    position       : relative;
-    padding-top    : 3rem;
-    display        : flex;
-    align-items    : center;
+    position: relative;
+    padding-top: 3rem;
+    display: flex;
+    align-items: center;
     justify-content: space-between;
-    gap            : 50px;
-    z-index        : 1;
+    gap: 50px;
+    z-index: 1;
 }
 
 .plan__data {
-    /* Konteynerning umumiy rangi oq bo'lgani uchun, matn rangini ham to'g'irlaymiz */
     max-width: 500px;
 }
 
 .plan__title {
-    color      : var(--white-color);
-    /* Oq rang */
-    font-size  : 40px;
-    /* Misol o'lcham */
+    color: var(--white-color);
+    font-size: 40px;
     font-family: var(--second-font);
-    /* ... */
 }
 
 .plan__description {
     color: var(--white-color);
-    /* Oq rang */
-    /* ... */
 }
 
-
-/* ================ PLAN SELECTION STYLES ================ */
-.steps-section{
+.steps-section {
     padding-top: 100px;
 }
+
 .selection-wrapper {
     display: flex;
-    max-width: var(--max-width); /* Masalan, 1100px */
+    max-width: var(--max-width);
     margin: 80px auto;
     gap: 50px;
 }
@@ -1486,7 +1256,6 @@ footer {
     flex-direction: column;
 }
 
-/* Navigatsiya tugmasi */
 .tab {
     padding: 12px 0;
     background: none;
@@ -1501,11 +1270,10 @@ footer {
 }
 
 .tab.active {
-    color: var(--first-color); /* Yashil rang */
+    color: var(--first-color);
     font-weight: 900;
 }
 
-/* O'ng kontent */
 .right-content {
     flex: 1;
     padding-left: 30px;
@@ -1526,7 +1294,6 @@ footer {
     margin-bottom: 40px;
 }
 
-/* Tanlov kartochkasi */
 .card {
     padding: 25px;
     background: #f4f4f4;
@@ -1543,7 +1310,7 @@ footer {
 }
 
 .card.active {
-    background: var(--first-color); /* Yashil rang */
+    background: var(--first-color);
     color: var(--white-color);
 }
 
@@ -1551,9 +1318,8 @@ footer {
     display: none !important;
 }
 
-/* Pastdagi yig'indi qutisi */
 .summary-box {
-    background-color: var(--h3-color); /* To'q rang */
+    background-color: var(--h3-color);
     color: var(--white-color);
     padding: 30px;
     border-radius: 10px;
@@ -1573,7 +1339,7 @@ footer {
 }
 
 .summary-sentence b {
-    color: var(--first-color); /* Yashil rang */
+    color: var(--first-color);
     font-weight: 900;
 }
 
@@ -1589,14 +1355,13 @@ footer {
     font-weight: 700;
 }
 
-/* ================ MODAL STYLES (Order Summary) ================ */
 .modal {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.7); /* To'qroq fon */
+    background: rgba(0, 0, 0, 0.7);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1626,7 +1391,7 @@ footer {
 
 .modal__title {
     font-family: var(--second-font);
-    font-weight: 900;
+font-weight: 900;
     font-size: 28px;
     color: var(--h3-color);
     margin-bottom: 15px;
@@ -1673,7 +1438,160 @@ footer {
     font-weight: 700;
 }
 
-/* Checkout Done Box */
 .done-box {
     text-align: center;
+}
+
+/*=============== MOBIL RESPONCIVLIK (750px va KICHIK) IXCHAMLANGAN QISMI ===============*/
+@media screen and (max-width: 750px) {
+    .header {
+        height: 80px;
+    }
+
+    .main {
+        padding-top: 0px;
+    }
+
+    .nav__menu {
+        position: fixed;
+        width: 100%;
+        top: -100vh;
+        height: 100vh;
+        padding-block: 64px;
+        transition: top .4s;
+    }
+
+    .nav__list {
+        flex-direction: column;
+        gap: 45px;
+        margin-top: 80px;
+    }
+
+    .nav__link {
+        font-weight: 800;
+        font-size: 15px;
+        letter-spacing: 2px;
+    }
+
+    .nav__toggle,
+    .nav__close {
+        display: flex;
+    }
+
+    .home__container {
+        grid-template-columns: 1fr;
+        row-gap: 3rem;
+    }
+
+    .home__images {
+        order: 1;
+        margin-bottom: 15px;
+    }
+
+    .home__data {
+        order: 2;
+        position: static !important;
+        width: 100% !important;
+        text-align: center !important;
+        top: auto !important;
+        left: auto !important;
+        margin: 0 auto;
+    }
+
+    .home__title {
+        font-size: 50px;
+        line-height: 55px;
+    }
+
+    .home__sticker {
+        display: none;
+    }
+
+    .collection__images li {
+        width: 100% !important;
+    }
+
+    .collection__title {
+        font-size: 60px;
+        line-height: 60px;
+    }
+
+    .opinion {
+        margin-bottom: 700px;
+    }
+
+    .opinion__images {
+        display: flex;
+        flex-direction: column;
+        top: 700px;
+        row-gap: 25px;
+    }
+
+    .opinion-slide {
+        margin-left: 0;
+    }
+
+    .footer__container {
+        flex-direction: column;
+        row-gap: 25px;
+    }
+
+    .about__container,
+    .commitment__container {
+        flex-direction: column;
+        gap: 50px;
+    }
+
+    .headquarters__images {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .work__images {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .work__images::before {
+        display: none;
+    }
+
+    .work-slide {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    .work-slide::before {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .selection-wrapper {
+        flex-direction: column;
+        margin: 40px auto;
+        gap: 20px;
+    }
+
+    .left-menu {
+        width: 100%;
+        flex-direction: row;
+        overflow-x: auto;
+        padding-bottom: 10px;
+        border-bottom: 2px solid #ccc;
+    }
+    
+    .tab {
+        white-space: nowrap;
+        margin-right: 15px;
+        border-bottom: none;
+    }
+
+    .right-content {
+        padding-left: 0;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
 }
