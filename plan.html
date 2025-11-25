@@ -57,6 +57,101 @@
             </div>
             </div>
     </section>
+    <section class="steps-section container">
+        <div class="work__images"> <li class="work-slide">
+                <h2>01</h2>
+                <h3 class="work__title-name">Pick your coffee</h3>
+                <p class="work__text-name">Select your favorite type of coffee.</p>
+            </li>
+            <li class="work-slide">
+                <h2>02</h2>
+                <h3 class="work__title-name">Choose the frequency</h3>
+                <p class="work__text-name">Choose how often you want coffee.</p>
+            </li>
+            <li class="work-slide">
+                <h2>03</h2>
+                <h3 class="work__title-name">Receive and enjoy!</h3>
+                <p class="work__text-name">We deliver fresh coffee every time.</p>
+            </li>
+        </div>
+    </section>
+    
+    <section class="selection-wrapper container">
+        <aside class="left-menu">
+            <button class="tab active" data-tab="drink">01 Preferences</button>
+            <button class="tab" data-tab="bean">02 Bean Type</button>
+            <button class="tab" data-tab="quantity">03 Quantity</button>
+            <button class="tab" data-tab="grind">04 Grind Option</button>
+            <button class="tab" data-tab="delivery">05 Deliveries</button>
+        </aside>
+
+        <div class="right-content">
+            <h3 class="content__title">How do you drink your coffee?</h3>
+
+            <div class="cards" data-content="drink" data-label="I drink my coffee as">
+                <div class="card" data-value="Capsule" data-price="10.00">Capsule</div>
+                <div class="card" data-value="Filter" data-price="12.00">Filter</div>
+                <div class="card" data-value="Espresso" data-price="14.00">Espresso</div>
+            </div>
+
+            <h3 class="content__title hidden-title">What type of coffee?</h3>
+            <div class="cards hidden" data-content="bean" data-label="with a type of bean">
+                <div class="card" data-value="Single Origin" data-price="2.00">Single Origin</div>
+                <div class="card" data-value="Decaf" data-price="0.00">Decaf</div>
+                <div class="card" data-value="Blended" data-price="1.00">Blended</div>
+            </div>
+
+            <h3 class="content__title hidden-title">How much would you like?</h3>
+            <div class="cards hidden" data-content="quantity" data-label="">
+                <div class="card" data-value="250g" data-price="0.00">250g</div>
+                <div class="card" data-value="500g" data-price="5.00">500g</div>
+                <div class="card" data-value="1000g" data-price="9.00">1000g</div>
+            </div>
+            
+            <h3 class="content__title hidden-title">Want us to grind them?</h3>
+            <div class="cards hidden" data-content="grind" data-label="ground ala">
+                <div class="card" data-value="Wholebean" data-price="0.00">Wholebean</div>
+                <div class="card" data-value="Filter" data-price="0.00">Filter</div>
+                <div class="card" data-value="Cafetiére" data-price="0.00">Cafetiére</div>
+            </div>
+            
+            <h3 class="content__title hidden-title">How often do we deliver?</h3>
+            <div class="cards hidden" data-content="delivery" data-label="sent to me">
+                <div class="card" data-value="Every Week" data-price="0.00">Every Week</div>
+                <div class="card" data-value="Every 2 Weeks" data-price="-2.00">Every 2 Weeks (2$ chegirma)</div>
+                <div class="card" data-value="Every Month" data-price="-5.00">Every Month (5$ chegirma)</div>
+            </div>
+            
+            <div class="summary-box">
+                <p class="summary-prefix">“I drink my coffee as <span class="summary-placeholder">____</span>...</p>
+                <p class="summary-sentence">I drink my coffee as <b data-summary="drink">...</b>, with a <b data-summary="bean">...</b> type of bean. <b data-summary="quantity">...</b>, ground ala <b data-summary="grind">...</b>, sent to me <b data-summary="delivery">...</b>.</p>
+            </div>
+
+            <button id="createPlanBtn" class="create-btn">Create my plan</button>
+        </div>
+    </section>
+
+    <div id="modal" class="modal hidden">
+        <div class="modal-box">
+            <button class="modal-close" id="modalClose">&times;</button>
+            <h2 class="modal__title">Order Summary</h2>
+            <p id="summaryText" class="modal__summary"></p>
+            <p class="summary-warning">Is that correct? You can proceed to checkout or go back to modify your selections. Shipping is included. Redemption discount codes can also be redeemed at the checkout.</p>
+            <div class="modal__footer">
+                <h3 class="price" id="finalPrice">$0.00 / mo</h3>
+                <button id="checkoutBtn" class="checkout">Checkout</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="done" class="modal hidden">
+        <div class="modal-box done-box">
+            <h2 class="modal__title">Zakazingiz qabul qilindi! 🙌</h2>
+            <p>Coffeeingiz tez orada jo‘natiladi. Buyurtma tafsilotlari elektron pochtangizga yuboriladi.</p>
+            <button id="doneClose" class="checkout">OK</button>
+        </div>
+    </div>
+
 </main>
     <footer class="footer">
         <div class="footer__container  container">
